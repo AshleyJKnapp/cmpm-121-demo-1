@@ -23,8 +23,8 @@ counter.innerHTML = `No bogos binted 👽`;
 app.append(counter);
 
 // --- Event Listening ---
-button.addEventListener("click", function(){
-    bogosCount++;
-    // Update Text
-    counter.innerHTML = `${bogosCount} bogos binted 👽`;
+button.addEventListener("click", function () {
+  bogosCount++;
+  // Update Text
+  counter.innerHTML = `${bogosCount} bogos binted 👽`;
 });
