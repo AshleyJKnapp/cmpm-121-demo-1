@@ -2,6 +2,8 @@ import "./style.css";
 
 // --- Variables ---
 let bogosCount: number = 0;
+const autoClickInterval: number = 1000;
+const autoBogosAmount: number = 1;
 
 // --- Page Setup ---
 const app: HTMLDivElement = document.querySelector("#app")!;
@@ -19,12 +21,25 @@ button.style.fontSize = "100px";
 app.append(button);
 
 const counter = document.createElement("div");
+counter.style.fontSize = "25px";
+counter.style.paddingTop = "15px";
 counter.innerHTML = `No bogos binted 👽`;
 app.append(counter);
 
+// Auto Clicking
+setInterval(function(){
+    bogosIncrease(autoBogosAmount);
+}, autoClickInterval)
+
 // --- Event Listening ---
 button.addEventListener("click", function () {
-  bogosCount++;
+  bogosIncrease(1);
+});
+
+// --- Helper Functions ---
+function bogosIncrease(amount: number){
+    // Increase bogos by amount
+    bogosCount += amount;
   // Update Text
   counter.innerHTML = `${bogosCount} bogos binted 👽`;
-});
+}
