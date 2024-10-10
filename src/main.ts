@@ -9,6 +9,9 @@ let lastUpdate: number = performance.now();
 let upgradeAmt1: number = 0;
 let upgradeAmt2: number = 0;
 let upgradeAmt3: number = 0;
+let upgradeCost1: number = 10;
+let upgradeCost2: number = 100;
+let upgradeCost3: number = 1000;
 // Some const vars may change later on but for now they are const
 
 // --- Page Setup ---
@@ -68,8 +71,9 @@ upgradeBtn1.addEventListener("click", function () {
     upgradeAmt1++;
     autoBogosAmount += 0.1;
     bogosDecrease(10);
+    upgradeCost1*=1.15;
     growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
-    upgradeBtn1.innerHTML = `Auto Binting x0.1<br>(Cost 10 Bogos)<br>${upgradeAmt1}`;
+    upgradeBtn1.innerHTML = `Auto Binting x0.1<br>(Cost ${upgradeCost1.toFixed(2)} Bogos)<br>${upgradeAmt1}`;
   }
 });
 
@@ -78,8 +82,9 @@ upgradeBtn2.addEventListener("click", function () {
     upgradeAmt2++;
     autoBogosAmount += 2;
     bogosDecrease(100);
+    upgradeCost2*=1.15;
     growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
-    upgradeBtn2.innerHTML = `Auto Binting x2<br>(Cost 100 Bogos)<br>${upgradeAmt2}`;
+    upgradeBtn2.innerHTML = `Auto Binting x2<br>(Cost ${upgradeCost2.toFixed(2)} Bogos)<br>${upgradeAmt2}`;
   }
 });
 
@@ -88,8 +93,9 @@ upgradeBtn3.addEventListener("click", function () {
     upgradeAmt3++;
     autoBogosAmount += 50;
     bogosDecrease(1000);
+    upgradeCost3*=1.15;
     growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
-    upgradeBtn3.innerHTML = `Auto Binting x50<br>(Cost 1000 Bogos)<br>${upgradeAmt3}`;
+    upgradeBtn3.innerHTML = `Auto Binting x50<br>(Cost ${upgradeCost3.toFixed(2)} Bogos)<br>${upgradeAmt3}`;
   }
 });
 
