@@ -8,7 +8,6 @@ const autoClickInterval: number = 1000;
 let lastUpdate: number = performance.now();
 // Some const vars may change later on but for now they are const
 
-
 // --- Page Setup ---
 const app: HTMLDivElement = document.querySelector("#app")!;
 
@@ -38,14 +37,13 @@ app.append(counter);
 
 // Automatically increment the counter by autoBogosAmount every 1000ms (autoCLickInterval)
 requestAnimationFrame(interval); // Initial call to start autoclicking process
-function interval(timestamp: number){
-    if (timestamp - lastUpdate >= autoClickInterval){
-        lastUpdate = timestamp;
-        bogosIncrease(autoBogosAmount);
-    }
-    requestAnimationFrame(interval);
+function interval(timestamp: number) {
+  if (timestamp - lastUpdate >= autoClickInterval) {
+    lastUpdate = timestamp;
+    bogosIncrease(autoBogosAmount);
+  }
+  requestAnimationFrame(interval);
 }
-
 
 // --- Event Listening ---
 button.addEventListener("click", function () {
