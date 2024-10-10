@@ -3,8 +3,8 @@ import "./style.css";
 // --- Variables ---
 let bogosCount: number = 0;
 const clickBogosAmount: number = 1;
-let autoBogosAmount: number = 0;
 const autoClickInterval: number = 1000;
+let autoBogosAmount: number = 0;
 let lastUpdate: number = performance.now();
 let upgradeAmt1: number = 0;
 let upgradeAmt2: number = 0;
@@ -27,7 +27,7 @@ app.append(header);
 const counter = document.createElement("div");
 counter.style.fontSize = "25px";
 counter.style.paddingTop = "15px";
-counter.innerHTML = `${bogosCount.toFixed(0)} bogos binted 👽`;
+counter.innerHTML = `${bogosCount.toFixed(2)} bogos binted 👽`;
 app.append(counter);
 
 // -- Buttons --
@@ -70,7 +70,7 @@ upgradeBtn1.addEventListener("click", function () {
   if (bogosCount >= 10) {
     upgradeAmt1++;
     autoBogosAmount += 0.1;
-    bogosDecrease(10);
+    bogosDecrease(upgradeAmt1);
     upgradeCost1 *= 1.15;
     growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn1.innerHTML = `Auto Binting x0.1<br>(Cost ${upgradeCost1.toFixed(2)} Bogos)<br>${upgradeAmt1}`;
@@ -81,7 +81,7 @@ upgradeBtn2.addEventListener("click", function () {
   if (bogosCount >= 100) {
     upgradeAmt2++;
     autoBogosAmount += 2;
-    bogosDecrease(100);
+    bogosDecrease(upgradeAmt2);
     upgradeCost2 *= 1.15;
     growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn2.innerHTML = `Auto Binting x2<br>(Cost ${upgradeCost2.toFixed(2)} Bogos)<br>${upgradeAmt2}`;
@@ -92,7 +92,7 @@ upgradeBtn3.addEventListener("click", function () {
   if (bogosCount >= 1000) {
     upgradeAmt3++;
     autoBogosAmount += 50;
-    bogosDecrease(1000);
+    bogosDecrease(upgradeAmt3);
     upgradeCost3 *= 1.15;
     growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn3.innerHTML = `Auto Binting x50<br>(Cost ${upgradeCost3.toFixed(2)} Bogos)<br>${upgradeAmt3}`;
@@ -115,7 +115,7 @@ function bogosIncrease(amount: number) {
   // Increase bogos by amount
   bogosCount += amount;
   // Update Text
-  counter.innerHTML = `${bogosCount.toFixed(0)} bogos binted 👽`;
+  counter.innerHTML = `${bogosCount.toFixed(2)} bogos binted 👽`;
   // Check disabled buttons
   checkDisabled();
 }
@@ -124,7 +124,7 @@ function bogosDecrease(amount: number) {
   // Increase bogos by amount
   bogosCount -= amount;
   // Update Text
-  counter.innerHTML = `${bogosCount.toFixed(0)} bogos binted 👽`;
+  counter.innerHTML = `${bogosCount.toFixed(2)} bogos binted 👽`;
   // Check disabled buttons
   checkDisabled();
 }
