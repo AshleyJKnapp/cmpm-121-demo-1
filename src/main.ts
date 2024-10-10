@@ -28,25 +28,51 @@ app.append(counter);
 const clickerBtn = document.createElement("button");
 clickerBtn.innerHTML = "👽";
 clickerBtn.style.fontSize = "100px";
-clickerBtn.style.shapeRendering = "circle";
 app.append(clickerBtn);
 
-const autoClickUpgradeBtn = document.createElement("button");
-autoClickUpgradeBtn.innerHTML = "Auto Binting<br>(Cost 10 Bogos)";
-autoClickUpgradeBtn.style.fontSize = "20px";
-autoClickUpgradeBtn.style.placeContent = "top right";
-// autoClickUpgradeBtn.style.color = "gray";
-app.prepend(autoClickUpgradeBtn);
+const upgradeBtn1 = document.createElement("button");
+upgradeBtn1.innerHTML = "Auto Binting x0.1<br>(Cost 10 Bogos)";
+upgradeBtn1.style.fontSize = "20px";
+upgradeBtn1.style.placeContent = "top right";
+
+const upgradeBtn2 = document.createElement("button");
+upgradeBtn2.innerHTML = "Auto Binting x2<br>(Cost 100 Bogos)";
+upgradeBtn2.style.fontSize = "20px";
+upgradeBtn2.style.placeContent = "top right";
+
+const upgradeBtn3 = document.createElement("button");
+upgradeBtn3.innerHTML = "Auto Binting x50<br>(Cost 1000 Bogos)";
+upgradeBtn3.style.fontSize = "20px";
+upgradeBtn3.style.placeContent = "top right";
+
+// upgrade btn app appends/prepends
+app.prepend(upgradeBtn3);
+app.prepend(upgradeBtn2);
+app.prepend(upgradeBtn1);
 
 // --- Event Listening ---
 clickerBtn.addEventListener("click", function () {
   bogosIncrease(clickBogosAmount);
 });
 
-autoClickUpgradeBtn.addEventListener("click", function () {
+upgradeBtn1.addEventListener("click", function () {
   if (bogosCount >= 10) {
-    autoBogosAmount++;
+    autoBogosAmount += 0.1;
     bogosDecrease(10);
+  }
+});
+
+upgradeBtn2.addEventListener("click", function () {
+  if (bogosCount >= 100) {
+    autoBogosAmount += 2;
+    bogosDecrease(100);
+  }
+});
+
+upgradeBtn3.addEventListener("click", function () {
+  if (bogosCount >= 1000) {
+    autoBogosAmount += 50;
+    bogosDecrease(1000);
   }
 });
 
@@ -71,7 +97,7 @@ function bogosIncrease(amount: number) {
   // Increase bogos by amount
   bogosCount += amount;
   // Update Text
-  counter.innerHTML = `${bogosCount} bogos binted 👽`;
+  counter.innerHTML = `${bogosCount.toFixed(0)} bogos binted 👽`;
   // Check disabled buttons
   checkDisabled();
 }
@@ -80,11 +106,13 @@ function bogosDecrease(amount: number) {
   // Increase bogos by amount
   bogosCount -= amount;
   // Update Text
-  counter.innerHTML = `${bogosCount} bogos binted 👽`;
+  counter.innerHTML = `${bogosCount.toFixed(0)} bogos binted 👽`;
   // Check disabled buttons
   checkDisabled();
 }
 
 function checkDisabled() {
-  autoClickUpgradeBtn.disabled = bogosCount < 10;
+  upgradeBtn1.disabled = bogosCount < 10;
+  upgradeBtn2.disabled = bogosCount < 100;
+  upgradeBtn3.disabled = bogosCount < 1000;
 }
