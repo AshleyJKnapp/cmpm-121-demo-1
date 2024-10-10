@@ -3,7 +3,7 @@ import "./style.css";
 // --- Variables ---
 let bogosCount: number = 0;
 const clickBogosAmount: number = 1;
-const autoBogosAmount: number = 1;
+let autoBogosAmount: number = 0;
 const autoClickInterval: number = 1000;
 let lastUpdate: number = performance.now();
 // Some const vars may change later on but for now they are const
@@ -18,16 +18,38 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-const button = document.createElement("button");
-button.innerHTML = "👽";
-button.style.fontSize = "100px";
-app.append(button);
-
 const counter = document.createElement("div");
 counter.style.fontSize = "25px";
 counter.style.paddingTop = "15px";
-counter.innerHTML = `No bogos binted 👽`;
+counter.innerHTML = `0 bogos binted 👽`;
 app.append(counter);
+
+// -- Buttons --
+const clickerBtn = document.createElement("button");
+clickerBtn.innerHTML = "👽";
+clickerBtn.style.fontSize = "100px";
+clickerBtn.style.shapeRendering = "circle";
+app.append(clickerBtn);
+
+const autoClickUpgradeBtn = document.createElement("button");
+autoClickUpgradeBtn.innerHTML = "Auto Binting<br>(Cost 10 Bogos)";
+autoClickUpgradeBtn.style.fontSize = "20px";
+autoClickUpgradeBtn.style.placeContent = "top right";
+// autoClickUpgradeBtn.style.color = "gray";
+app.prepend(autoClickUpgradeBtn);
+
+
+// --- Event Listening ---
+clickerBtn.addEventListener("click", function () {
+  bogosIncrease(clickBogosAmount);
+});
+
+autoClickUpgradeBtn.addEventListener("click", function () {
+    if (bogosCount >= 10){
+        autoBogosAmount++;
+        bogosDecrease(10);
+    }
+});
 
 // -- Auto Clicking --
 // Old method that was affected by framerate
@@ -45,15 +67,25 @@ function interval(timestamp: number) {
   requestAnimationFrame(interval);
 }
 
-// --- Event Listening ---
-button.addEventListener("click", function () {
-  bogosIncrease(clickBogosAmount);
-});
-
 // --- Helper Functions ---
 function bogosIncrease(amount: number) {
   // Increase bogos by amount
   bogosCount += amount;
   // Update Text
   counter.innerHTML = `${bogosCount} bogos binted 👽`;
+  // Check disabled buttons
+    checkDisabled();
+}
+
+function bogosDecrease(amount: number) {
+    // Increase bogos by amount
+    bogosCount -= amount;
+    // Update Text
+    counter.innerHTML = `${bogosCount} bogos binted 👽`;
+    // Check disabled buttons
+    checkDisabled();
+  }
+
+function checkDisabled(){
+    autoClickUpgradeBtn.disabled = bogosCount < 10;
 }
