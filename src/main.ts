@@ -6,6 +6,9 @@ const clickBogosAmount: number = 1;
 let autoBogosAmount: number = 0;
 const autoClickInterval: number = 1000;
 let lastUpdate: number = performance.now();
+let upgradeAmt1: number = 0;
+let upgradeAmt2: number = 0;
+let upgradeAmt3: number = 0;
 // Some const vars may change later on but for now they are const
 
 // --- Page Setup ---
@@ -21,7 +24,7 @@ app.append(header);
 const counter = document.createElement("div");
 counter.style.fontSize = "25px";
 counter.style.paddingTop = "15px";
-counter.innerHTML = `0 bogos binted 👽`;
+counter.innerHTML = `${bogosCount.toFixed(0)} bogos binted 👽`;
 app.append(counter);
 
 // -- Buttons --
@@ -31,24 +34,30 @@ clickerBtn.style.fontSize = "100px";
 app.append(clickerBtn);
 
 const upgradeBtn1 = document.createElement("button");
-upgradeBtn1.innerHTML = "Auto Binting x0.1<br>(Cost 10 Bogos)";
+upgradeBtn1.innerHTML = "Auto Binting x0.1<br>(Cost 10 Bogos)<br>0";
 upgradeBtn1.style.fontSize = "20px";
-upgradeBtn1.style.placeContent = "top right";
 
 const upgradeBtn2 = document.createElement("button");
-upgradeBtn2.innerHTML = "Auto Binting x2<br>(Cost 100 Bogos)";
+upgradeBtn2.innerHTML = "Auto Binting x2<br>(Cost 100 Bogos)<br>0";
 upgradeBtn2.style.fontSize = "20px";
-upgradeBtn2.style.placeContent = "top right";
 
 const upgradeBtn3 = document.createElement("button");
-upgradeBtn3.innerHTML = "Auto Binting x50<br>(Cost 1000 Bogos)";
+upgradeBtn3.innerHTML = "Auto Binting x50<br>(Cost 1000 Bogos)<br>0";
 upgradeBtn3.style.fontSize = "20px";
-upgradeBtn3.style.placeContent = "top right";
 
 // upgrade btn app appends/prepends
 app.prepend(upgradeBtn3);
 app.prepend(upgradeBtn2);
 app.prepend(upgradeBtn1);
+upgradeBtn1.disabled = true;
+upgradeBtn2.disabled = true;
+upgradeBtn3.disabled = true;
+
+const growthLabel = document.createElement("p");
+growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+growthLabel.style.fontSize = "20px";
+app.prepend(growthLabel);
+
 
 // --- Event Listening ---
 clickerBtn.addEventListener("click", function () {
@@ -57,31 +66,35 @@ clickerBtn.addEventListener("click", function () {
 
 upgradeBtn1.addEventListener("click", function () {
   if (bogosCount >= 10) {
+    upgradeAmt1++;
     autoBogosAmount += 0.1;
     bogosDecrease(10);
+    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+    upgradeBtn1.innerHTML = `Auto Binting x0.1<br>(Cost 10 Bogos)<br>${upgradeAmt1}`;
   }
 });
 
 upgradeBtn2.addEventListener("click", function () {
   if (bogosCount >= 100) {
+    upgradeAmt2++;
     autoBogosAmount += 2;
     bogosDecrease(100);
+    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+    upgradeBtn2.innerHTML = `Auto Binting x2<br>(Cost 100 Bogos)<br>${upgradeAmt2}`;
   }
 });
 
 upgradeBtn3.addEventListener("click", function () {
   if (bogosCount >= 1000) {
+    upgradeAmt3++;
     autoBogosAmount += 50;
     bogosDecrease(1000);
+    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+    upgradeBtn3.innerHTML = `Auto Binting x50<br>(Cost 1000 Bogos)<br>${upgradeAmt3}`;
   }
 });
 
 // -- Auto Clicking --
-// Old method that was affected by framerate
-// setInterval(function () {
-//   bogosIncrease(autoBogosAmount);
-// }, autoClickInterval);
-
 // Automatically increment the counter by autoBogosAmount every 1000ms (autoCLickInterval)
 requestAnimationFrame(interval); // Initial call to start autoclicking process
 function interval(timestamp: number) {
@@ -116,3 +129,4 @@ function checkDisabled() {
   upgradeBtn2.disabled = bogosCount < 100;
   upgradeBtn3.disabled = bogosCount < 1000;
 }
+
