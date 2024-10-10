@@ -38,17 +38,16 @@ autoClickUpgradeBtn.style.placeContent = "top right";
 // autoClickUpgradeBtn.style.color = "gray";
 app.prepend(autoClickUpgradeBtn);
 
-
 // --- Event Listening ---
 clickerBtn.addEventListener("click", function () {
   bogosIncrease(clickBogosAmount);
 });
 
 autoClickUpgradeBtn.addEventListener("click", function () {
-    if (bogosCount >= 10){
-        autoBogosAmount++;
-        bogosDecrease(10);
-    }
+  if (bogosCount >= 10) {
+    autoBogosAmount++;
+    bogosDecrease(10);
+  }
 });
 
 // -- Auto Clicking --
@@ -74,18 +73,18 @@ function bogosIncrease(amount: number) {
   // Update Text
   counter.innerHTML = `${bogosCount} bogos binted 👽`;
   // Check disabled buttons
-    checkDisabled();
+  checkDisabled();
 }
 
 function bogosDecrease(amount: number) {
-    // Increase bogos by amount
-    bogosCount -= amount;
-    // Update Text
-    counter.innerHTML = `${bogosCount} bogos binted 👽`;
-    // Check disabled buttons
-    checkDisabled();
-  }
+  // Increase bogos by amount
+  bogosCount -= amount;
+  // Update Text
+  counter.innerHTML = `${bogosCount} bogos binted 👽`;
+  // Check disabled buttons
+  checkDisabled();
+}
 
-function checkDisabled(){
-    autoClickUpgradeBtn.disabled = bogosCount < 10;
+function checkDisabled() {
+  autoClickUpgradeBtn.disabled = bogosCount < 10;
 }
