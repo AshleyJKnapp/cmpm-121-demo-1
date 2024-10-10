@@ -54,10 +54,9 @@ upgradeBtn2.disabled = true;
 upgradeBtn3.disabled = true;
 
 const growthLabel = document.createElement("p");
-growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
 growthLabel.style.fontSize = "20px";
 app.prepend(growthLabel);
-
 
 // --- Event Listening ---
 clickerBtn.addEventListener("click", function () {
@@ -69,7 +68,7 @@ upgradeBtn1.addEventListener("click", function () {
     upgradeAmt1++;
     autoBogosAmount += 0.1;
     bogosDecrease(10);
-    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn1.innerHTML = `Auto Binting x0.1<br>(Cost 10 Bogos)<br>${upgradeAmt1}`;
   }
 });
@@ -79,7 +78,7 @@ upgradeBtn2.addEventListener("click", function () {
     upgradeAmt2++;
     autoBogosAmount += 2;
     bogosDecrease(100);
-    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn2.innerHTML = `Auto Binting x2<br>(Cost 100 Bogos)<br>${upgradeAmt2}`;
   }
 });
@@ -89,7 +88,7 @@ upgradeBtn3.addEventListener("click", function () {
     upgradeAmt3++;
     autoBogosAmount += 50;
     bogosDecrease(1000);
-    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`
+    growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn3.innerHTML = `Auto Binting x50<br>(Cost 1000 Bogos)<br>${upgradeAmt3}`;
   }
 });
@@ -129,4 +128,3 @@ function checkDisabled() {
   upgradeBtn2.disabled = bogosCount < 100;
   upgradeBtn3.disabled = bogosCount < 1000;
 }
-
