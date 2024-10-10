@@ -1,15 +1,15 @@
 import "./style.css";
 
 interface Item {
-  name: string,
-  cost: number,
-  rate: number
-};
+  name: string;
+  cost: number;
+  rate: number;
+}
 
-const availableItems : Item[] = [
-  {name: "Small Binter", cost: 10, rate: 0.1},
-  {name: "Average Binter", cost: 100, rate: 2},
-  {name: "Epic Binter", cost: 1000, rate: 50},
+const availableItems: Item[] = [
+  { name: "Small Binter", cost: 10, rate: 0.1 },
+  { name: "Average Binter", cost: 100, rate: 2 },
+  { name: "Epic Binter", cost: 1000, rate: 50 },
 ];
 
 // --- Variables ---
@@ -21,13 +21,15 @@ let lastUpdate: number = performance.now();
 let upgradeAmt1: number = 0;
 let upgradeAmt2: number = 0;
 let upgradeAmt3: number = 0;
-let upgradeCost1:number = availableItems[0]["cost"]*Math.pow(1.15, upgradeAmt1);
-let upgradeCost2:number = availableItems[1]["cost"]*Math.pow(1.15, upgradeAmt2);
-let upgradeCost3:number = availableItems[2]["cost"]*Math.pow(1.15, upgradeAmt3);
+let upgradeCost1: number =
+  availableItems[0]["cost"] * Math.pow(1.15, upgradeAmt1);
+let upgradeCost2: number =
+  availableItems[1]["cost"] * Math.pow(1.15, upgradeAmt2);
+let upgradeCost3: number =
+  availableItems[2]["cost"] * Math.pow(1.15, upgradeAmt3);
 // let upgradeCost1: number = 10;
 // let upgradeCost2: number = 100;
 // let upgradeCost3: number = 1000;
-
 
 console.log(availableItems[0]["name"]);
 
@@ -86,14 +88,14 @@ clickerBtn.addEventListener("click", function () {
 upgradeBtn1.addEventListener("click", function () {
   if (bogosCount >= 10) {
     // Deduct cost from total
-    upgradeCost1 = availableItems[0]["cost"]*Math.pow(1.15, upgradeAmt1);
+    upgradeCost1 = availableItems[0]["cost"] * Math.pow(1.15, upgradeAmt1);
     bogosDecrease(upgradeCost1);
     autoBogosAmount += 0.1;
     // Calc new cost to show on label
     upgradeAmt1++;
-    upgradeCost1 = availableItems[0]["cost"]*Math.pow(1.15, upgradeAmt1);
-  checkDisabled();
-  growthLabel.innerHTML = `Current ${availableItems[0]["name"]} Rate: ${autoBogosAmount.toFixed(1)}`;
+    upgradeCost1 = availableItems[0]["cost"] * Math.pow(1.15, upgradeAmt1);
+    checkDisabled();
+    growthLabel.innerHTML = `Current ${availableItems[0]["name"]} Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn1.innerHTML = `${availableItems[0]["name"]} x${availableItems[0]["rate"]}<br>(Cost ${upgradeCost1.toFixed(2)} Bogos)<br>${upgradeAmt1}`;
   }
 });
@@ -101,14 +103,14 @@ upgradeBtn1.addEventListener("click", function () {
 upgradeBtn2.addEventListener("click", function () {
   if (bogosCount >= 100) {
     // Deduct cost from total
-    upgradeCost2 = availableItems[1]["cost"]*Math.pow(1.15, upgradeAmt2);
+    upgradeCost2 = availableItems[1]["cost"] * Math.pow(1.15, upgradeAmt2);
     bogosDecrease(upgradeCost2);
     autoBogosAmount += 2;
     // Calc new cost to show on label
     upgradeAmt2++;
-    upgradeCost2 = availableItems[1]["cost"]*Math.pow(1.15, upgradeAmt2);
-  checkDisabled();
-  growthLabel.innerHTML = `Current ${availableItems[1]["name"]} Rate: ${autoBogosAmount.toFixed(1)}`;
+    upgradeCost2 = availableItems[1]["cost"] * Math.pow(1.15, upgradeAmt2);
+    checkDisabled();
+    growthLabel.innerHTML = `Current ${availableItems[1]["name"]} Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn2.innerHTML = `${availableItems[1]["name"]} x${availableItems[1]["rate"]}<br>(Cost ${upgradeCost2.toFixed(2)} Bogos)<br>${upgradeAmt2}`;
   }
 });
@@ -116,14 +118,14 @@ upgradeBtn2.addEventListener("click", function () {
 upgradeBtn3.addEventListener("click", function () {
   if (bogosCount >= 1000) {
     // Deduct cost from total
-    upgradeCost3 = availableItems[2]["cost"]*Math.pow(1.15, upgradeAmt3);
+    upgradeCost3 = availableItems[2]["cost"] * Math.pow(1.15, upgradeAmt3);
     bogosDecrease(upgradeCost3);
     autoBogosAmount += 50;
     // Calc new cost to show on label
     upgradeAmt3++;
-    upgradeCost3 = availableItems[2]["cost"]*Math.pow(1.15, upgradeAmt2);
-  checkDisabled();
-  growthLabel.innerHTML = `Current ${availableItems[2]["name"]} Rate: ${autoBogosAmount.toFixed(1)}`;
+    upgradeCost3 = availableItems[2]["cost"] * Math.pow(1.15, upgradeAmt2);
+    checkDisabled();
+    growthLabel.innerHTML = `Current ${availableItems[2]["name"]} Rate: ${autoBogosAmount.toFixed(1)}`;
     upgradeBtn3.innerHTML = `${availableItems[2]["name"]} x${availableItems[2]["rate"]}<br>(Cost ${upgradeCost3.toFixed(2)} Bogos)<br>${upgradeAmt3}`;
   }
 });
