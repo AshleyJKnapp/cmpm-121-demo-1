@@ -4,12 +4,13 @@ interface Item {
   name: string;
   cost: number;
   rate: number;
+  description: string;
 }
 
 const availableItems: Item[] = [
-  { name: "Small Binter", cost: 10, rate: 0.1 },
-  { name: "Average Binter", cost: 100, rate: 2 },
-  { name: "Epic Binter", cost: 1000, rate: 50 },
+  { name: "Small Binter", cost: 10, rate: 0.1, description: "A small binter to increase<br>your automatic binting<br>rate a little bit"},
+  { name: "Average Binter", cost: 100, rate: 2, description: "A binter of decent<br>size to double your<br>binting rate"},
+  { name: "Epic Binter", cost: 1000, rate: 50, description: "A rather epic and<br>awesome sauce<br>industrial binter that<br>increases your rate a ton"},
 ];
 
 // --- Variables ---
@@ -31,12 +32,12 @@ let upgradeCost3: number =
 // let upgradeCost2: number = 100;
 // let upgradeCost3: number = 1000;
 
-console.log(availableItems[0]["name"]);
+// console.log(availableItems[0]["name"]);
 
 // --- Page Setup ---
 const app: HTMLDivElement = document.querySelector("#app")!;
 
-const gameName = "My very epic and totally cool game";
+const gameName = "Did you get your photos printed?";
 document.title = gameName;
 
 const header = document.createElement("h1");
@@ -54,6 +55,20 @@ const clickerBtn = document.createElement("button");
 clickerBtn.innerHTML = "👽";
 clickerBtn.style.fontSize = "100px";
 app.append(clickerBtn);
+
+// -- Button Description --
+const upgradeDesc1 = document.createElement("p");
+upgradeDesc1.innerHTML = `${availableItems[0]["description"]}`;
+
+const upgradeDesc2 = document.createElement("p");
+upgradeDesc2.innerHTML = `${availableItems[1]["description"]}`;
+
+const upgradeDesc3 = document.createElement("p");
+upgradeDesc3.innerHTML = `${availableItems[2]["description"]}`;
+
+app.prepend(upgradeDesc1);
+app.prepend(upgradeDesc2);
+app.prepend(upgradeDesc3);
 
 const upgradeBtn1 = document.createElement("button");
 upgradeBtn1.innerHTML = `${availableItems[0]["name"]} x${availableItems[0]["rate"]}<br>(Cost ${upgradeCost1} Bogos)<br>${upgradeAmt1}`;
