@@ -8,9 +8,26 @@ interface Item {
 }
 
 const availableItems: Item[] = [
-  { name: "Small Binter", cost: 10, rate: 0.1, description: "A small binter to increase<br>your automatic binting<br>rate a little bit"},
-  { name: "Average Binter", cost: 100, rate: 2, description: "A binter of decent<br>size to double your<br>binting rate"},
-  { name: "Epic Binter", cost: 1000, rate: 50, description: "A rather epic and<br>awesome sauce<br>industrial binter that<br>increases your rate a ton"},
+  {
+    name: "Small Binter",
+    cost: 10,
+    rate: 0.1,
+    description:
+      "A small binter to increase<br>your automatic binting<br>rate a little bit",
+  },
+  {
+    name: "Average Binter",
+    cost: 100,
+    rate: 2,
+    description: "A binter of decent<br>size to double your<br>binting rate",
+  },
+  {
+    name: "Epic Binter",
+    cost: 1000,
+    rate: 50,
+    description:
+      "A rather epic and<br>awesome sauce<br>industrial binter that<br>increases your rate a ton",
+  },
 ];
 
 // --- Variables ---
