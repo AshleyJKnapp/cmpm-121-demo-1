@@ -7,7 +7,7 @@ interface Item {
   description: string;
   descriptionVar: HTMLParagraphElement;
   btnVar: HTMLButtonElement;
-  numUpgrade: number,
+  numUpgrade: number;
 }
 
 // --- Variables ---
@@ -48,7 +48,6 @@ upgradeContainer.append(buttonUpContain);
 const buttonDescContain = document.createElement("div");
 upgradeContainer.append(buttonDescContain);
 
-
 // -- Button Description --
 const upgradeDesc1 = document.createElement("p");
 const upgradeDesc2 = document.createElement("p");
@@ -57,13 +56,13 @@ const upgradeBtn1 = document.createElement("button");
 const upgradeBtn2 = document.createElement("button");
 const upgradeBtn3 = document.createElement("button");
 
-
 const availableItems: Item[] = [
   {
     name: "Small Binter",
     cost: 10,
     rate: 0.1,
-    description: "A small binter to increase<br>your automatic binting<br>rate a little bit",
+    description:
+      "A small binter to increase<br>your automatic binting<br>rate a little bit",
     descriptionVar: upgradeDesc1,
     btnVar: upgradeBtn1,
     numUpgrade: 0,
@@ -82,28 +81,35 @@ const availableItems: Item[] = [
     cost: 1000,
     rate: 50,
     description:
-    "A rather epic and<br>awesome sauce<br>industrial binter that<br>increases your rate a ton",
+      "A rather epic and<br>awesome sauce<br>industrial binter that<br>increases your rate a ton",
     descriptionVar: upgradeDesc3,
     btnVar: upgradeBtn3,
     numUpgrade: 0,
   },
 ];
 
-
-for (let i = 0; i < availableItems.length; i++){
+for (let i = 0; i < availableItems.length; i++) {
   // Description
-  availableItems[i].descriptionVar.innerHTML = `${availableItems[i].description}`;
-  availableItems[i].descriptionVar.setAttribute("style", "width: 150px; display: inline-block; vertical-align: top; margin: 10px");
+  availableItems[i].descriptionVar.innerHTML =
+    `${availableItems[i].description}`;
+  availableItems[i].descriptionVar.setAttribute(
+    "style",
+    "width: 150px; display: inline-block; vertical-align: top; margin: 10px",
+  );
   buttonDescContain.append(availableItems[i].descriptionVar);
   // Buttons
-  availableItems[i].btnVar.innerHTML = `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${availableItems[i].cost} Bogos)<br>${availableItems[i].numUpgrade}`;
-  availableItems[i].btnVar.setAttribute("style", "width: 150px; display: inline-block; verticalAlign: top; margin: 10px");
+  availableItems[i].btnVar.innerHTML =
+    `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${availableItems[i].cost} Bogos)<br>${availableItems[i].numUpgrade}`;
+  availableItems[i].btnVar.setAttribute(
+    "style",
+    "width: 150px; display: inline-block; verticalAlign: top; margin: 10px",
+  );
   buttonUpContain.append(availableItems[i].btnVar);
   availableItems[i].btnVar.disabled = true;
 
-
   availableItems[i].btnVar.addEventListener("click", function () {
-    let upgradeCost = availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
+    let upgradeCost =
+      availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
     if (bogosCount >= upgradeCost) {
       // Deduct cost from total
       bogosDecrease(upgradeCost);
@@ -111,13 +117,14 @@ for (let i = 0; i < availableItems.length; i++){
       autoBogosAmount += availableItems[i].rate;
       // Calc new cost to show on label
       availableItems[i].numUpgrade += 1;
-      upgradeCost = availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
+      upgradeCost =
+        availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
       growthLabel.innerHTML = `Current ${availableItems[i].name} Rate: ${autoBogosAmount.toFixed(1)}`;
-      availableItems[i].btnVar.innerHTML = `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${upgradeCost.toFixed(2)} Bogos)<br>${availableItems[i].numUpgrade}`;
+      availableItems[i].btnVar.innerHTML =
+        `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${upgradeCost.toFixed(2)} Bogos)<br>${availableItems[i].numUpgrade}`;
     }
   });
 }
-
 
 const growthLabel = document.createElement("p");
 growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
@@ -128,7 +135,6 @@ app.prepend(growthLabel);
 clickerBtn.addEventListener("click", function () {
   bogosIncrease(clickBogosAmount);
 });
-
 
 // -- Auto Clicking --
 // Automatically increment the counter by autoBogosAmount every 1000ms (autoCLickInterval)
@@ -158,7 +164,9 @@ function bogosDecrease(amount: number) {
 }
 
 function checkDisabled() {
-  for (let i = 0; i < availableItems.length; i++){
-    availableItems[i].btnVar.disabled = bogosCount < availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
+  for (let i = 0; i < availableItems.length; i++) {
+    availableItems[i].btnVar.disabled =
+      bogosCount <
+      availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
   }
 }
