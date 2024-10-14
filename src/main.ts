@@ -95,8 +95,7 @@ const availableItems: Item[] = [
     name: "Binting Factory",
     cost: 5000,
     rate: 100,
-    description:
-      "An entire factory dedicated to your cause of binting bogos",
+    description: "An entire factory dedicated to your cause of binting bogos",
     descriptionVar: upgradeDesc4,
     btnVar: upgradeBtn4,
     numUpgrade: 0,
@@ -105,8 +104,7 @@ const availableItems: Item[] = [
     name: "Binting Nation",
     cost: 10000,
     rate: 500,
-    description:
-      "A whole nation dedicated to binting your bogos",
+    description: "A whole nation dedicated to binting your bogos",
     descriptionVar: upgradeDesc5,
     btnVar: upgradeBtn5,
     numUpgrade: 0,
