@@ -120,7 +120,7 @@ for (let i = 0; i < availableItems.length; i++) {
     "width: 150px; display: inline-block; vertical-align: top; margin: 10px",
   );
   buttonDescContain.append(availableItems[i].descriptionVar);
-  
+
   // Buttons
   availableItems[i].btnVar.innerHTML =
     `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${availableItems[i].cost} Bogos)<br>${availableItems[i].numUpgrade}`;
@@ -140,7 +140,7 @@ for (let i = 0; i < availableItems.length; i++) {
       bogosDecrease(upgradeCost);
       console.log(upgradeCost);
       autoBogosAmount += availableItems[i].rate;
-      
+
       // Calc new cost to show on label
       availableItems[i].numUpgrade += 1;
       upgradeCost =
