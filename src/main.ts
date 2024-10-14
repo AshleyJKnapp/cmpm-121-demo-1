@@ -32,12 +32,13 @@ counter.setAttribute("style", "font-size: 25px; padding-top: 15px");
 counter.innerHTML = `${bogosCount.toFixed(2)} bogos binted 👽`;
 app.append(counter);
 
-// -- Buttons --
+// -- Main Button --
 const clickerBtn = document.createElement("button");
 clickerBtn.innerHTML = "👽";
 clickerBtn.style.fontSize = "100px";
 app.append(clickerBtn);
 
+// -- Containers --
 const upgradeContainer = document.createElement("div");
 upgradeContainer.style.marginTop = "20px";
 app.append(upgradeContainer);
@@ -48,13 +49,17 @@ upgradeContainer.append(buttonUpContain);
 const buttonDescContain = document.createElement("div");
 upgradeContainer.append(buttonDescContain);
 
-// -- Button Description --
+// -- Button Description Vars --
 const upgradeDesc1 = document.createElement("p");
 const upgradeDesc2 = document.createElement("p");
 const upgradeDesc3 = document.createElement("p");
+const upgradeDesc4 = document.createElement("p");
+const upgradeDesc5 = document.createElement("p");
 const upgradeBtn1 = document.createElement("button");
 const upgradeBtn2 = document.createElement("button");
 const upgradeBtn3 = document.createElement("button");
+const upgradeBtn4 = document.createElement("button");
+const upgradeBtn5 = document.createElement("button");
 
 const availableItems: Item[] = [
   {
@@ -84,6 +89,26 @@ const availableItems: Item[] = [
       "A rather epic and<br>awesome sauce<br>industrial binter that<br>increases your rate a ton",
     descriptionVar: upgradeDesc3,
     btnVar: upgradeBtn3,
+    numUpgrade: 0,
+  },
+  {
+    name: "Binting Factory",
+    cost: 5000,
+    rate: 100,
+    description:
+      "An entire factory dedicated to your cause of binting bogos",
+    descriptionVar: upgradeDesc4,
+    btnVar: upgradeBtn4,
+    numUpgrade: 0,
+  },
+  {
+    name: "Binting Nation",
+    cost: 10000,
+    rate: 500,
+    description:
+      "A whole nation dedicated to binting your bogos",
+    descriptionVar: upgradeDesc5,
+    btnVar: upgradeBtn5,
     numUpgrade: 0,
   },
 ];
@@ -119,7 +144,7 @@ for (let i = 0; i < availableItems.length; i++) {
       availableItems[i].numUpgrade += 1;
       upgradeCost =
         availableItems[i].cost * Math.pow(1.15, availableItems[i].numUpgrade);
-      growthLabel.innerHTML = `Current ${availableItems[i].name} Rate: ${autoBogosAmount.toFixed(1)}`;
+      growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
       availableItems[i].btnVar.innerHTML =
         `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${upgradeCost.toFixed(2)} Bogos)<br>${availableItems[i].numUpgrade}`;
     }
@@ -129,7 +154,7 @@ for (let i = 0; i < availableItems.length; i++) {
 const growthLabel = document.createElement("p");
 growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
 growthLabel.style.fontSize = "20px";
-app.prepend(growthLabel);
+upgradeContainer.prepend(growthLabel);
 
 // --- Event Listening ---
 clickerBtn.addEventListener("click", function () {
