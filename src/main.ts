@@ -2,7 +2,6 @@ import "./style.css";
 // import bogosVert from "./Assets/BogosVert.jpg";
 // import bogosHorz from "./Assets/BogosHorz.jpg";
 
-
 interface Item {
   name: string;
   cost: number;
@@ -52,8 +51,6 @@ const imgHorz = document.createElement("img");
 imgHorz.src = "src/Assets/BogosHorz.jpg";
 // imgHorz.style.scale = "1";
 rightDiv.append(imgHorz);
-
-
 
 // -- Main Button --
 const clickerBtn = document.createElement("button");
