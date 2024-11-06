@@ -1,4 +1,7 @@
 import "./style.css";
+// import bogosVert from "./Assets/BogosVert.jpg";
+// import bogosHorz from "./Assets/BogosHorz.jpg";
+
 
 interface Item {
   name: string;
@@ -32,10 +35,30 @@ counter.setAttribute("style", "font-size: 25px; padding-top: 15px");
 counter.innerHTML = `${bogosCount.toFixed(2)} bogos binted 👽`;
 app.append(counter);
 
+const leftDiv = document.createElement("div");
+leftDiv.className = "leftBar";
+app.append(leftDiv);
+
+const imgLeft = document.createElement("img");
+imgLeft.src = "src/Assets/BogosVert.jpg";
+// imgLeft.style.scale = ".45";
+leftDiv.append(imgLeft);
+
+const rightDiv = document.createElement("div");
+rightDiv.className = "rightBar";
+app.append(rightDiv);
+
+const imgHorz = document.createElement("img");
+imgHorz.src = "src/Assets/BogosHorz.jpg";
+// imgHorz.style.scale = "1";
+rightDiv.append(imgHorz);
+
+
+
 // -- Main Button --
 const clickerBtn = document.createElement("button");
+clickerBtn.classList.add("bogos-clicker");
 clickerBtn.innerHTML = "👽";
-clickerBtn.style.fontSize = "100px";
 app.append(clickerBtn);
 
 // -- Containers --
@@ -136,7 +159,7 @@ for (let i = 0; i < availableItems.length; i++) {
   availableItems[i].btnVar.disabled = true;
 
   // Event Listeners
-  
+
   availableItems[i].btnVar.addEventListener("click", function () {
     let upgradeCost =
       availableItems[i].cost * Math.pow(scaleBy, availableItems[i].numUpgrade);
@@ -149,7 +172,8 @@ for (let i = 0; i < availableItems.length; i++) {
       // Calc new cost to show on label
       availableItems[i].numUpgrade += 1;
       upgradeCost =
-        availableItems[i].cost * Math.pow(scaleBy, availableItems[i].numUpgrade);
+        availableItems[i].cost *
+        Math.pow(scaleBy, availableItems[i].numUpgrade);
       growthLabel.innerHTML = `Current Auto Bint Rate: ${autoBogosAmount.toFixed(1)}`;
       availableItems[i].btnVar.innerHTML =
         `${availableItems[i].name} x${availableItems[i].rate}<br>(Cost ${upgradeCost.toFixed(2)} Bogos)<br>${availableItems[i].numUpgrade}`;

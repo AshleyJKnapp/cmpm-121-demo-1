@@ -62,6 +62,55 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Inspired by https://github.com/NickCorfmat/cmpm-121-demo-1 */
+.bogos-clicker {
+  width: 15vw;
+  height: 15vw;
+  cursor: pointer;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(60, 50, 85);
+  transition: outline 0.2s ease;
+  font-size: 5em;
+}
+
+.bogos-clicker:hover {
+  transition: 0.2s ease;
+  outline: 4px solid white;
+}
+
+
+/* Inspired by https://github.com/CJMoshy/cmpm-121-demo-1 */
+.leftBar {
+  background-color: rgb(41, 45, 75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  width: 30%;
+  height: 100%;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  margin-top: 50px;
+}
+
+.rightBar {
+  background-color: rgb(41, 45, 75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  width: 30%;
+  height: 100%;
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  margin-top: 50px;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
